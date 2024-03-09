@@ -20,15 +20,25 @@ def get_profile_info(username, L):
     
     try:
         profile = instaloader.Profile.from_username(L.context, username)
+        
         if not profile.is_private:
             print("Username:", profile.username)
             print("Full Name:", profile.full_name)
             print("Biography:", profile.biography)
             print("Followers Count:", profile.followers)
             print("Followees Count:", profile.followees)
+            
             print("\nFollowers:")
             for follower in profile.get_followers():
                 print(follower.username)
+            
+            print("\nFollowees (Following):")
+            for follower in profile.get_followees():
+                print(follower.username)
+                
+        else:
+            print("This profile is private.")
+                
     except instaloader.exceptions.ProfileNotExistsException:
         print("Profile not found.")
                 
