@@ -8,6 +8,7 @@ def login(username):
         print("Session file does not exist yet - Logging in.")
         InstaObject.context.username = username
         InstaObject.interactive_login(username)  
+        print("Login Successfull!!")
     except instaloader.exceptions.BadCredentialsException:
         print("Login failed! Invalid username or password.")
         return None
