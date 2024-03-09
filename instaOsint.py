@@ -14,9 +14,22 @@ def login(username):
     return InstaObject
 
 def get_profile_info(username, L):
-     if not L:
+    if not L:
         print("Login failed. Exiting.")
         return
+    
+    try:
+        profile = instaloader.Profile.from_username(L.context, username)
+        if not profile.is_private:
+            print("Username:", profile.username)
+            print("Full Name:", profile.full_name)
+            print("Biography:", profile.biography)
+            print("Followers Count:", profile.followers)
+            print("Followees Count:", profile.followees)
+            print("\nFollowers:")
+            for follower in profile.get_followers():
+                print(follower.username)
+                
 
 if __name__ == "__main__":
     username = input("Enter your Instagram username: ")
