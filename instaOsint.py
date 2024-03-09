@@ -7,7 +7,7 @@ def login(username):
     except FileNotFoundError:
         print("Session file does not exist yet - Logging in.")
         InstaObject.context.username = username
-        InstaObject.interactive_login(username)  # Prompt for password interactively
+        InstaObject.interactive_login(username)  
     except instaloader.exceptions.BadCredentialsException:
         print("Login failed! Invalid username or password.")
         return None
