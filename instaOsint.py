@@ -29,6 +29,8 @@ def get_profile_info(username, L):
             print("\nFollowers:")
             for follower in profile.get_followers():
                 print(follower.username)
+    except instaloader.exceptions.ProfileNotExistsException:
+        print("Profile not found.")
                 
 
 if __name__ == "__main__":
